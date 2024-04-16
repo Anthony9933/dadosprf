@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-import matplotlib.pyplot as plt
+pip install pandas matplotlib
 
 # Sidebar (Menu Lateral)
 page = st.sidebar.selectbox("Escolha a Página", ["Visão Geral", "Filtros e Dados"])
