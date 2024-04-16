@@ -45,7 +45,7 @@ def show_filters_data():
         #df = pd.read_csv('datatran2017.csv')
     
 
-    df['dia'] = pd.to_datetime(df['date_acident']).dt.day
+    df['dia'] = pd.to_datetime(df['dia_semana']).dt.day
 
     ano = st.sidebar.selectbox('Selecione o dia', options=df['dia'].unique())
     early_access = st.sidebar.checkbox('Apenas Early Access')
@@ -57,10 +57,10 @@ def show_filters_data():
     if recommendation:
         filtered_df = filtered_df[filtered_df['recommendation'] == "Recommended"]
 
-    cidade = st.sidebar.selectbox('Selecione uma cidade', options=df['title'].unique())
-    cidade_df = filtered_df[filtered_df['title'] == cidade]
+    cidade = st.sidebar.selectbox('Selecione um Município', options=df['title'].unique())
+    cidade_df = filtered_df[filtered_df['title'] == municipio]
 
-    st.write(cidade_df)
+    st.write(municipio_df)
 
 
     st.header('Gráficos')
