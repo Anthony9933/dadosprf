@@ -36,13 +36,13 @@ def show_overview():
 
 def show_filters_data():
     st.header("Filtros e Dados")
-    df = pd.read_csv('datatran2023.csv')
-    df = pd.read_csv('datatran2022.csv')
-    df = pd.read_csv('datatran2021.csv')
-    df = pd.read_csv('datatran2020.csv')
-    df = pd.read_csv('datatran2019.csv')
-    df = pd.read_csv('datatran2018.csv')
-    df = pd.read_csv('datatran2017.csv')
+        df = pd.read_csv('datatran2023.csv', encoding='utf-8')
+        #df = pd.read_csv('datatran2022.csv')
+        #df = pd.read_csv('datatran2021.csv')
+        #df = pd.read_csv('datatran2020.csv')
+        #df = pd.read_csv('datatran2019.csv')
+        #df = pd.read_csv('datatran2018.csv')
+        #df = pd.read_csv('datatran2017.csv')
     
 
     df['dia'] = pd.to_datetime(df['date_acident']).dt.day
