@@ -36,7 +36,7 @@ def show_overview():
 
 def show_filters_data():
     st.header("Filtros e Dados")
-    df2023 = pd.read_csv('datatran2023.csv', encoding='latin-1', delimiter=';')
+    df = pd.read_csv('datatran2023.csv', encoding='latin-1', delimiter=';')
 
     df['dia_semana'] = df['dia_semana'].dt.day_name()
     dia_semana = st.sidebar.selectbox('Selecione o dia', options=df['dia_semana'].unique())
