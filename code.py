@@ -45,20 +45,20 @@ def show_filters_data():
     df = pd.read_csv('datatran2017.csv')
     
 
-    df['ano'] = pd.to_datetime(df['date_posted']).dt.year
+    df['dia'] = pd.to_datetime(df['date_acident']).dt.day
 
-    ano = st.sidebar.selectbox('Selecione o Ano', options=df['ano'].unique())
+    ano = st.sidebar.selectbox('Selecione o dia', options=df['dia'].unique())
     early_access = st.sidebar.checkbox('Apenas Early Access')
     recommendation = st.sidebar.checkbox('Apenas Recomendados')
 
-    filtered_df = df[df['ano'] == ano]
+    filtered_df = df[df['dia'] == dia]
     if early_access:
         filtered_df = filtered_df[filtered_df['is_early_access_review'] == True]
     if recommendation:
         filtered_df = filtered_df[filtered_df['recommendation'] == "Recommended"]
 
-    game = st.sidebar.selectbox('Selecione uma cidade', options=df['title'].unique())
-    game_df = filtered_df[filtered_df['title'] == cidade]
+    cidade = st.sidebar.selectbox('Selecione uma cidade', options=df['title'].unique())
+    cidade_df = filtered_df[filtered_df['title'] == cidade]
 
     st.write(cidade_df)
 
@@ -66,7 +66,7 @@ def show_filters_data():
     st.header('Gráficos')
 
     # Média de horas de jogo de cada jogo
-    avg_hours = df.groupby('title')['hour_played'].mean()
+    avg_hours = df.groupby('title')['hour_acident'].mean()
     fig, ax = plt.subplots(figsize=(10,4))
     ax.bar(avg_hours.index, avg_hours.values)
     plt.xticks(rotation=90)
