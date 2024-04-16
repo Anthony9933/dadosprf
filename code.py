@@ -36,14 +36,15 @@ def show_overview():
 
 def show_filters_data():
     st.header("Filtros e Dados")
-    df = pd.read_csv('datatran2023.csv', encoding='latin-1', delimiter=';')
-        #df = pd.read_csv('datatran2022.csv')
-        #df = pd.read_csv('datatran2021.csv')
-        #df = pd.read_csv('datatran2020.csv')
-        #df = pd.read_csv('datatran2019.csv')
-        #df = pd.read_csv('datatran2018.csv')
-        #df = pd.read_csv('datatran2017.csv')
-    
+    df2023 = pd.read_csv('datatran2023.csv', encoding='latin-1', delimiter=';')
+    df2022 = pd.read_csv('datatran2022.csv', encoding='latin-1', delimiter=';')
+    df2021 = pd.read_csv('datatran2021.csv', encoding='latin-1', delimiter=';')
+    df2020 = pd.read_csv('datatran2020.csv', encoding='latin-1', delimiter=';')
+    df2019 = pd.read_csv('datatran2019.csv', encoding='latin-1', delimiter=';')
+    df2018 = pd.read_csv('datatran2018.csv', encoding='latin-1', delimiter=';')
+    df2017 = pd.read_csv('datatran2017.csv', encoding='latin-1', delimiter=';')
+
+    df = pd.concat([df2023, df2022, df2021, df2020, df2019, df2018, df2017])
 
     df['dia'] = pd.to_datetime(df['dia_semana']).dt.day
 
