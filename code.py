@@ -37,6 +37,66 @@ def show_overview():
 if page == "Visão Geral":
     show_overview()
 
-# Importando bibliotecas
-import pandas as pd
-import matplotlib.pyplot as plt
+def show_filters_data():
+    st.header("Filtros e Dados")
+    df2023 = pd.read_csv('/content/drive/MyDrive/Bases/datatran2023.csv', encoding='latin-1', delimiter=';')
+    df2022 = pd.read_csv('/content/drive/MyDrive/Bases/datatran2022.csv', encoding='latin-1', delimiter=';')
+    df2021 = pd.read_csv('/content/drive/MyDrive/Bases/datatran2021.csv', encoding='latin-1', delimiter=';')
+    df2020 = pd.read_csv('/content/drive/MyDrive/Bases/datatran2020.csv', encoding='latin-1', delimiter=';')
+    df2019 = pd.read_csv('/content/drive/MyDrive/Bases/datatran2019.csv', encoding='latin-1', delimiter=';')
+    df2018 = pd.read_csv('/content/drive/MyDrive/Bases/datatran2018.csv', encoding='latin-1', delimiter=';')
+    df2017 = pd.read_csv('/content/drive/MyDrive/Bases/datatran2017.csv', encoding='latin-1', delimiter=';')
+
+    df['ano'] = pd.to_datetime(df['date_posted']).dt.year
+
+    ano = st.sidebar.selectbox('Selecione o Ano', options=df['ano'].unique())
+    early_access = st.sidebar.checkbox('Apenas Early Access')
+    recommendation = st.sidebar.checkbox('Apenas Recomendados')
+
+    filtered_df = df[df['ano'] == ano]
+    if early_access:
+        filtered_df = filtered_df[filtered_df['is_early_access_review'] == True]
+    if recommendation:
+        filtered_df = filtered_df[filtered_df['recommendation'] == "Recommended"]
+
+    game = st.sidebar.selectbox('Selecione uma cidade', options=df['title'].unique())
+    game_df = filtered_df[filtered_df['title'] == cidade]
+
+    st.write(cidade_df)
+
+
+    st.header('Gráficos')
+
+    # Média de horas de jogo de cada jogo
+    avg_hours = df.groupby('title')['hour_played'].mean()
+    fig, ax = plt.subplots(figsize=(10,4))
+    ax.bar(avg_hours.index, avg_hours.values)
+    plt.xticks(rotation=90)
+    plt.title('Média de Horas Jogadas por Jogo')
+    plt.xlabel('Jogo')
+    plt.ylabel('Média de Horas Jogadas')
+    st.pyplot(fig)
+
+    # Quantidade de funny
+    funny_counts = df.groupby('title')['funny'].sum()
+    fig, ax = plt.subplots(figsize=(10,4))
+    ax.bar(funny_counts.index, funny_counts.values)
+    plt.xticks(rotation=90)
+    plt.title('Quantidade de Acidentes por mês')
+    plt.xlabel('Acidentes')
+    plt.ylabel('Meses')
+    st.pyplot(fig)
+
+    # Quantidade de helpful por jogo
+    helpful_counts = df.groupby('title')['helpful'].sum()
+    fig, ax = plt.subplots(figsize=(10,4))
+    ax.bar(helpful_counts.index, helpful_counts.values)
+    plt.xticks(rotation=90)
+    plt.title('Quantidade de Reações Úteis por Jogo')
+    plt.xlabel('Jogo')
+    plt.ylabel('Quantidade de Reações Úteis')
+    st.pyplot(fig)
+
+# Página de Filtros e Dados
+elif page == "Filtros e Dados":
+    show_filters_data()
