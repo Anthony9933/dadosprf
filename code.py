@@ -45,9 +45,9 @@ def show_filters_data():
     df2017 = pd.read_csv('datatran2017.csv', encoding='latin-1', delimiter=';')
 
     df = pd.concat([df2023, df2022, df2021, df2020, df2019, df2018, df2017])
-
+    df.head()
     df['dia'] = pd.to_datetime(df['dia_semana']).dt.day
-
+    df.head()
     ano = st.sidebar.selectbox('Selecione o dia', options=df['dia'].unique())
     early_access = st.sidebar.checkbox('Apenas Early Access')
     recommendation = st.sidebar.checkbox('Apenas Recomendados')
