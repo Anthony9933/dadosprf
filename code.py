@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+import matplotlib.pyplot as plt
 
 # Sidebar (Menu Lateral)
 page = st.sidebar.selectbox("Escolha a Página", ["Visão Geral", "Filtros e Dados"])
@@ -35,3 +36,7 @@ def show_overview():
 # Página de Visão Geral
 if page == "Visão Geral":
     show_overview()
+
+# Importando bibliotecas
+import pandas as pd
+import matplotlib.pyplot as plt
