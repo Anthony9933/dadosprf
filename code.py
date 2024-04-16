@@ -70,9 +70,9 @@ def show_filters_data():
     fig, ax = plt.subplots(figsize=(10,4))
     ax.bar(avg_hours.index, avg_hours.values)
     plt.xticks(rotation=90)
-    plt.title('Média de Horas Jogadas por Jogo')
-    plt.xlabel('Jogo')
-    plt.ylabel('Média de Horas Jogadas')
+    plt.title('Média de Acidentes por Mês')
+    plt.xlabel('Acidentes')
+    plt.ylabel('Média de Acidentes por Mês')
     st.pyplot(fig)
 
     # Quantidade de funny
@@ -90,9 +90,9 @@ def show_filters_data():
     fig, ax = plt.subplots(figsize=(10,4))
     ax.bar(helpful_counts.index, helpful_counts.values)
     plt.xticks(rotation=90)
-    plt.title('Quantidade de Reações Úteis por Jogo')
-    plt.xlabel('Jogo')
-    plt.ylabel('Quantidade de Reações Úteis')
+    plt.title('Quantidade de Acidentes por Ano')
+    plt.xlabel('Acidentes')
+    plt.ylabel('Quantidade de acidentes por Ano')
     st.pyplot(fig)
 
 # Página de Visão Geral
