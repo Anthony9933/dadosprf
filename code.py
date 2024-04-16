@@ -36,7 +36,7 @@ def show_overview():
 
 def show_filters_data():
     st.header("Filtros e Dados")
-        df = pd.read_csv('datatran2023.csv', encoding='utf-8')
+    df = pd.read_csv('datatran2023.csv', encoding='latin-1', delimiter=';')
         #df = pd.read_csv('datatran2022.csv')
         #df = pd.read_csv('datatran2021.csv')
         #df = pd.read_csv('datatran2020.csv')
