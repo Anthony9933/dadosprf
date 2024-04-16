@@ -57,34 +57,26 @@ def show_filters_data():
 
     st.header('Gráficos')
 
-    # Média de horas de jogo de cada jogo
-    avg_hours = df.groupby('title')['hour_acident'].mean()
+  
+
+    # Quantidade de acidentes por dia
+    acidentes_counts = df.groupby('title')['id'].sum()
     fig, ax = plt.subplots(figsize=(10,4))
-    ax.bar(avg_hours.index, avg_hours.values)
+    ax.bar(id_counts.index, id_counts.values)
     plt.xticks(rotation=90)
-    plt.title('Média de Acidentes por Mês')
+    plt.title('Quantidade de Acidentes por municipio')
     plt.xlabel('Acidentes')
-    plt.ylabel('Média de Acidentes por Mês')
+    plt.ylabel('Dia')
     st.pyplot(fig)
 
-    # Quantidade de funny
-    funny_counts = df.groupby('title')['funny'].sum()
+    
+    id_counts = df.groupby('title')['id'].sum()
     fig, ax = plt.subplots(figsize=(10,4))
-    ax.bar(funny_counts.index, funny_counts.values)
+    ax.bar(id_counts.index, id_counts.values)
     plt.xticks(rotation=90)
-    plt.title('Quantidade de Acidentes por mês')
+    plt.title('Quantidade de Acidentes por dia')
     plt.xlabel('Acidentes')
-    plt.ylabel('Meses')
-    st.pyplot(fig)
-
-    # Quantidade de helpful por jogo
-    helpful_counts = df.groupby('title')['helpful'].sum()
-    fig, ax = plt.subplots(figsize=(10,4))
-    ax.bar(helpful_counts.index, helpful_counts.values)
-    plt.xticks(rotation=90)
-    plt.title('Quantidade de Acidentes por Ano')
-    plt.xlabel('Acidentes')
-    plt.ylabel('Quantidade de acidentes por Ano')
+    plt.ylabel('Quantidade de acidentes por dia')
     st.pyplot(fig)
 
 # Página de Visão Geral
