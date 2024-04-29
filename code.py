@@ -33,9 +33,6 @@ def show_overview():
                "objetivos do seu projeto.")
   
     st.write("Aproveite a exploração do projeto visualização dos dados da PRF!")
-# Página de Visão Geral
-if page == "Visão Geral":
-    show_overview()
     
 def show_filters_data():
     st.header("Filtros e Dados")
@@ -82,6 +79,9 @@ def show_filters_data():
     plt.ylabel('Quantidade de acidentes por dia')
     st.pyplot(fig)
 
+# Página de Visão Geral
+if page == "Visão Geral":
+    show_overview()
 # Página de Filtros e Dados
 elif page == "Filtros e Dados":
     show_filters_data()
